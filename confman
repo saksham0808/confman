@@ -1,0 +1,14 @@
+#! /bin/bash
+
+cd $HOME/.confman/
+
+echo "ConfMan v0.1"
+
+files=$(ls -a | grep -E -v "^\.{1,2}$")
+
+counter=1
+for x in $files
+do
+	printf '%s:\t%s\n' "$counter" "$x"
+	counter=$((counter+1))
+done

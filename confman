@@ -12,3 +12,17 @@ do
 	printf '%s:\t%s\n' "$counter" "$x"
 	counter=$((counter+1))
 done
+
+printf '%s:\tTrack new config\n' "$counter"
+
+read -p "Choice: " choice
+p=(echo 'p')
+
+echo $counter
+if test $choice -eq $counter
+then
+	req=$(echo $files | sed 's/\ /\n/g'  | sed -n ${choice}p )
+	echo "Showing versions of file: $req"
+else
+	echo "Enter path of file to track"
+fi

@@ -1,5 +1,7 @@
 #! /bin/bash
 
+tput clear
+
 cd $HOME/.confman/
 
 echo "ConfMan v0.1"
@@ -21,8 +23,18 @@ p=(echo 'p')
 echo $counter
 if test $choice -eq $counter
 then
+	read -p "Enter name of file to track: " name
+	mkdir $name
+	mkdir $name/1
+	cp ~/$name ~/.confman/$name/1
+	echo "1. $comment" >> ~/.confman/$name/comments
+	time=$(date)
+	echo "1. $time" >> ~/.confman/$home/timestamps
+else
 	req=$(echo $files | sed 's/\ /\n/g'  | sed -n ${choice}p )
 	echo "Showing versions of file: $req"
-else
-	echo "Enter path of file to track"
+	for line in $(cat "$HOME/.confman/$req/comments")
+	do
+		echo $line
+	done
 fi
